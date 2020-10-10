@@ -1,17 +1,4 @@
-// Variables used by Scriptable.
-// These must be at the very top of the file. Do not edit.
-// icon-color: deep-purple; icon-glyph: image;
-
-// This widget was created by Max Zeryck @mzeryck
-
-/*
- * Change the widget settings and test out the widget in this section.
- * ===================================================================
- */
-
-/* -- PREVIEW YOUR WIDGET -- */
-
-const yourName = 'Distand'
+const yourName = Device.name()
 
 // Change to true to see a preview of your widget.
 const testMode = true
@@ -43,7 +30,7 @@ const numberOfEvents = 4
 const showTomorrow = true
 
 // Write a message when there are no events, or change to "" for blank.
-const noEventMessage = "永远相信美好的事情即将发生"
+const noEventMessage = "❤永远相信美好的事情即将发生"
 
 /* -- SPACING -- */
 

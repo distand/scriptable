@@ -11,27 +11,28 @@ async function createWidget(res) {
 
     const w = new ListWidget()
     w.spacing = 5
-    w.backgroundColor = Color.black()
-    const url = e.target.url.replace('api','www').replace('questions','question')
+    w.backgroundColor = new Color("#3C3F41",0.85)
 
     const t = w.addText(e.target.title)
+    t.font = new Font('',20-Math.min(3,Math.ceil(e.target.title.length / 16)))
     t.textColor = Color.white()
-    t.font = new Font('',17)
-    t.url = url
+    t.url = e.target.url.replace('api','www').replace('questions','question')
 
     const s = w.addStack()
-    const size = Device.screenSize()
-    const width = e.target.excerpt ? 70 : size.width - 80
     if(e.children[0].thumbnail){
+        const size = Device.screenSize()
+        const width = e.target.excerpt ? 72 : size.width - 100
         const img = s.addImage(await get(e.children[0].thumbnail,'image'))
-        img.imageSize = new Size(width,70)
+        img.imageSize = new Size(width,72)
         img.cornerRadius = 10
         img.applyFillingContentMode()
     }
-    s.addSpacer(8)
-    const c = s.addText(e.target.excerpt)
-    c.font = new Font('',10)
-
+    if(e.target.excerpt) {
+        s.addSpacer(8)
+        const c = s.addText(e.target.excerpt)
+        c.font = new Font('', 13 - Math.min(3, Math.floor(e.target.excerpt.length / 21)))
+        c.textColor = Color.white()
+    }
     return w
 }
 
